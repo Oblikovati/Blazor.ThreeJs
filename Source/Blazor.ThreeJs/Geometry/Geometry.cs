@@ -1,6 +1,4 @@
-﻿using Microsoft.JSInterop;
-
-namespace Blazor.ThreeJs.Geometry;
+﻿namespace Blazor.ThreeJs.Geometry;
 
 public class Geometry : Object3D
 {

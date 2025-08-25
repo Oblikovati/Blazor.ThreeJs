@@ -1,7 +1,4 @@
-﻿
-using Microsoft.JSInterop;
-
-namespace Blazor.ThreeJs.Mesh;
+﻿namespace Blazor.ThreeJs.Mesh;
 
 public class Mesh : Object3D
 {

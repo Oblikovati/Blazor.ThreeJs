@@ -1,7 +1,4 @@
-﻿using Microsoft.JSInterop;
-using SpawnDev.BlazorJS;
-
-namespace Blazor.ThreeJs.Scene;
+﻿namespace Blazor.ThreeJs.Scene;
 
 /// <summary>
 /// Scenes allow you to set up what is to be rendered and where by three.js. This is where you place objects, lights and cameras. 

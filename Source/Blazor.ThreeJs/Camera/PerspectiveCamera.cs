@@ -1,6 +1,4 @@
-﻿using Microsoft.JSInterop;
-
-namespace Blazor.ThreeJs.Camera;
+﻿namespace Blazor.ThreeJs.Camera;
 
 /// <summary>
 /// Camera that uses perspective projection.

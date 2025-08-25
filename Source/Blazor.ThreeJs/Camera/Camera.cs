@@ -1,7 +1,4 @@
-﻿using Microsoft.JSInterop;
-using SpawnDev.BlazorJS;
-
-namespace Blazor.ThreeJs.Camera;
+﻿namespace Blazor.ThreeJs.Camera;
 
 /// <summary>
 /// Abstract base class for cameras. This class should always be inherited when you build a new camera. 
@@ -16,5 +13,5 @@ public abstract class Camera : Object3D
     /// <param name="_ref"></param>
     public Camera(IJSInProcessObjectReference _ref) : base(_ref) { }
 
-    public Camera Clone () => JSRef!.Call<Camera>("clone");
+    public Camera Clone() => JSRef!.Call<Camera>("clone");
 }

@@ -1,7 +1,4 @@
-﻿
-using Microsoft.JSInterop;
-
-namespace Blazor.ThreeJs.Material;
+﻿namespace Blazor.ThreeJs.Material;
 
 public class MeshBasicMaterial : Material
 {

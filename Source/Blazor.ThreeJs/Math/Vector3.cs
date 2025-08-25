@@ -1,12 +1,10 @@
-﻿using Microsoft.JSInterop;
-using SpawnDev.BlazorJS;
+﻿namespace Blazor.ThreeJs.Math;
 
-namespace Blazor.ThreeJs;
-
-public class Vector3 : JSObject
+/// <summary>
+/// 
+/// </summary>
+public class Vector3(IJSInProcessObjectReference _ref) : JSObject(_ref)
 {
-    public Vector3(IJSInProcessObjectReference _ref) : base(_ref) { }
-
     public float X
     {
         get => JSRef!.Get<float>("x");

@@ -1,8 +1,4 @@
-﻿using Microsoft.JSInterop;
-using SpawnDev.BlazorJS;
-using SpawnDev.BlazorJS.JSObjects;
-
-namespace Blazor.ThreeJs.WebGLRenderer;
+﻿namespace Blazor.ThreeJs.WebGLRenderer;
 
 /// <summary>
 /// The WebGL renderer displays your beautifully crafted scenes using WebGL. 

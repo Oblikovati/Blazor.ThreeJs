@@ -18,7 +18,7 @@ First add the references your index.html file in the header section:
 </head>
 ```
 
-Second you have to setup your project to use [SpawnDev.BlazorJS]
+Second you have to setup your project with the proper dependant services.
 
 ```csharp
 // Program.cs
@@ -26,10 +26,11 @@ Second you have to setup your project to use [SpawnDev.BlazorJS]
 using SpawnDev.BlazorJS;
 using Blazor.ThreeJs;
 
+// Register the following services
 builder.Services.AddBlazorJSRuntime();
 builder.Services.AddThreeJs();
 
-// build and Init using BlazorJSRunAsync (instead of RunAsync)
+// Replace RunAsync with BlazorJSRunAsync
 await builder.Build().BlazorJSRunAsync();
 ```
 
@@ -103,7 +104,7 @@ The package contains 3 Projects
 - Blazor.ThreeJs.Tests: Our Unit Tests Definitions.
 - Blazor.ThreeJs.Tests.Runtime: Run this project and will you be able to run all the tests in the blazor page.
 
-The project relies on [SpawnDev.BlazorJS] for interop operations, all the bindinds are built on top of this library,
+The project relies on [SpawnDev.BlazorJS] for interop operations, all the bindings are built on top of this library,
 this library also supports bindings for all the browser apis.
 
 # Governance

@@ -1,5 +1,5 @@
 ﻿using Blazor.ThreeJs.Camera;
-using SpawnDev.BlazorJS;
+using Blazor.ThreeJs.Math;
 
 namespace Blazor.ThreeJs;
 
@@ -12,7 +12,7 @@ public class THREE
     {
         JS = js;
 
-        if(JS is null)
+        if (JS is null)
             throw new InvalidOperationException(
                 "BlazorJSRuntime not injected. Ensure you have added services.AddBlazorJSRuntime()" +
                 " in Program.cs and that THREE is registered as a service.");
