@@ -13,8 +13,8 @@ First add the references your index.html file in the header section:
 ```html
 <head>
     <!-- your other html tags -->
-    <script type="module" src="./_content/Blazor.ThreeJs/js/three.core.min.js"></script>
-    <script type="module" src="./_content/Blazor.ThreeJs/js/three.module.min.js"></script>
+    <script type="module" src="./_content/Blazor.ThreeJs/js/three.core.js"></script>    
+    <script type="module" src="./_content/Blazor.ThreeJs/js/interop.js"></script>
 </head>
 ```
 
@@ -24,12 +24,75 @@ Second you have to setup your project to use [SpawnDev.BlazorJS]
 // Program.cs
 
 using SpawnDev.BlazorJS;
+using Blazor.ThreeJs;
 
-// Add SpawnDev.BlazorJS.BlazorJSRuntime
 builder.Services.AddBlazorJSRuntime();
+builder.Services.AddThreeJs();
 
 // build and Init using BlazorJSRunAsync (instead of RunAsync)
 await builder.Build().BlazorJSRunAsync();
+```
+
+# Usage
+
+This example creates a canvas and shows a rotating cube.
+
+```csharp
+// Page.razor
+@using SpawnDev.BlazorJS
+@using Blazor.ThreeJs
+
+@inject THREE THREE
+@inject BlazorJSRuntime JS
+
+<!-- Your Page Code -->
+
+@code {
+    private WebGLRenderer.WebGLRenderer? _renderer;
+    private Scene.Scene? _scene;
+    private Camera.Camera? _camera;
+    private Mesh.Mesh? _cube;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+
+        if (firstRender)
+        {
+            var window = JS.GetWindow();
+            var document = JS.GetDocument();
+
+            if (window is null || document is null) return;
+
+            _scene = THREE.Scene();
+
+            _camera = THREE.PerspectiveCamera(75, window.InnerWidth / window.InnerHeight, 0.1, 1000);
+
+            _renderer = THREE.WebGLRenderer();
+            _renderer.SetClearColor(0x333333);
+            _renderer.SetSize(window.InnerWidth, window.InnerHeight);
+            _renderer.SetAnimationLoop(Animate);
+
+            document.Body?.AppendChild(_renderer.DomElement);
+
+            var geometry = THREE.BoxGeometry(1, 1, 1);
+            var material = THREE.MeshBasicMaterial( new Material.MeshBasicMaterialParameters { Color = 0x00ff00 } );
+            _cube = THREE.Mesh(geometry, material);
+            _scene.Add(_cube);
+
+            _camera.Position.Z = 3;
+        }
+    }
+
+    private void Animate()
+    {
+        if (_scene is null || _camera is null || _cube is null) return;
+
+        _cube.Rotation.X += 0.01f;
+        _cube.Rotation.Y += 0.01f;
+        _renderer?.Render(_scene, _camera);
+    }
+}
+
 ```
 
 # Development
