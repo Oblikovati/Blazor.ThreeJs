@@ -1,0 +1,13 @@
+﻿@page "/"
+@using SpawnDev.Blazor.UnitTesting
+@using System.Reflection
+
+<PageTitle>Blazor.ThreeJs Unit Tests</PageTitle>
+
+<UnitTestsView TestAssemblies="_assemblies"></UnitTestsView>
+
+@code {
+    IEnumerable<Assembly>? _assemblies = new List<Assembly> {
+        typeof(ThreeCoreTests).Assembly
+    };
+}

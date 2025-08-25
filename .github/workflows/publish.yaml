@@ -1,0 +1,41 @@
+name: Publish .NET Library to NuGet
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '9.x'
+
+    - name: Set package version
+      id: set_version
+      run: |
+        VERSION_DATE=$(date +'%y.%m.%d.%H%M')
+        echo "PACKAGE_VERSION=$VERSION_DATE" >> $GITHUB_ENV
+        echo "Package version set to $VERSION_DATE"
+        sed -i "s/<Version>.*<\/Version>/<Version>$VERSION_DATE<\/Version>/" Source/Blazor.ThreeJs/Blazor.ThreeJs.csproj
+
+    - name: Restore dependencies
+      run: dotnet restore Source/Blazor.ThreeJs.sln
+
+    - name: Build
+      run: dotnet build Source/Blazor.ThreeJs.sln --configuration Release --no-restore
+
+    - name: Pack
+      run: dotnet pack Source/Blazor.ThreeJs.sln --configuration Release --no-build --output ./nupkg
+
+    - name: Publish to NuGet
+      env:
+        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+      run: dotnet nuget push ./nupkg/*.nupkg --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json
