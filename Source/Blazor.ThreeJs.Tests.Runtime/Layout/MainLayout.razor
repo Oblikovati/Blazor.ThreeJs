@@ -1,3 +1,19 @@
 ﻿@inherits LayoutComponentBase
 
-@Body
+<FluentToastProvider />
+<FluentDialogProvider />
+<FluentTooltipProvider />
+<FluentMessageBarProvider />
+<FluentMenuProvider />
+
+<FluentMainLayout NavMenuTitle="Navigation menu">
+    <Header><h3>Blazor ThreeJs Tests</h3></Header>
+    <Body>
+        @Body
+    </Body>
+    <NavMenuContent>
+        <FluentNavLink Href="/rotating-cube" Text="Rotating Cube">Rotating Cube</FluentNavLink>
+        <FluentNavLink Href="/creating-text" Text="Creating Text">Creating Text</FluentNavLink>
+        <FluentNavLink Href="/drawing-lines" Text="Drawing Lines">Drawing Lines</FluentNavLink>
+    </NavMenuContent>
+</FluentMainLayout>

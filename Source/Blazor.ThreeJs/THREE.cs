@@ -1,5 +1,4 @@
 ﻿using Blazor.ThreeJs.Camera;
-using Blazor.ThreeJs.Math;
 
 namespace Blazor.ThreeJs;
 
@@ -19,7 +18,7 @@ public class THREE
     }
 
     /// <summary>
-    /// The WebGL renderer displays your beautifully crafted scenes using WebGL. 
+    /// Creates a WebGL Renderer
     /// </summary>
     /// <returns>WebGLRenderer Instance</returns>
     public WebGLRenderer.WebGLRenderer WebGLRenderer(WebGLRenderer.WebGLRendererParameters? parameters = null)
@@ -31,8 +30,7 @@ public class THREE
     }
 
     /// <summary>
-    /// Scenes allow you to set up what is to be rendered and where by three.js.
-    /// This is where you place objects, lights and cameras. 
+    /// Creates a Scene
     /// </summary>
     /// <returns>Scene Instance</returns>
     public Scene.Scene Scene(Scene.SceneParameters? parameters = null)
@@ -44,9 +42,7 @@ public class THREE
     }
 
     /// <summary>
-    /// Camera that uses perspective projection.
-    /// This projection mode is designed to mimic the way the human eye sees. 
-    /// It is the most common projection mode used for rendering a 3D scene. 
+    /// Creates a Perspective Camera
     /// </summary>
     /// <param name="fov">Field Of View</param>
     /// <param name="aspect">Aspect Ratio</param>
@@ -59,7 +55,7 @@ public class THREE
     }
 
     /// <summary>
-    /// 
+    /// Creates a Mesh
     /// </summary>
     /// <param name="geometry"></param>
     /// <returns></returns>
@@ -69,7 +65,7 @@ public class THREE
     }
 
     /// <summary>
-    ///
+    /// Creates a Mesh Basic Material
     /// </summary>
     /// <param name="parameters"></param>
     /// <returns></returns>
@@ -78,8 +74,13 @@ public class THREE
         return JS.New<Material.MeshBasicMaterial>($"{ThreeNS}.MeshBasicMaterial", parameters);
     }
 
+    public Material.LineBasicMaterial LineBasicMaterial(Material.LineBasicMaterialParameters parameters)
+    {
+        return JS.New<Material.LineBasicMaterial>($"{ThreeNS}.LineBasicMaterial", parameters);
+    }
+
     /// <summary>
-    /// 
+    /// Creates a Box Geometry
     /// </summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
@@ -91,7 +92,27 @@ public class THREE
     }
 
     /// <summary>
-    /// 
+    /// Creates a Buffer Geometry
+    /// </summary>
+    /// <returns></returns>
+    public Geometry.BufferGeometry BufferGeometry()
+    {
+        return JS.New<Geometry.BufferGeometry>($"{ThreeNS}.BufferGeometry");
+    }
+
+    /// <summary>
+    /// Creates a continuous line.
+    /// </summary>
+    /// <param name="geometry"></param>
+    /// <param name="material"></param>
+    /// <returns></returns>
+    public Objects.Line Line(Geometry.Geometry geometry, Material.Material material)
+    {
+        return JS.New<Objects.Line>($"{ThreeNS}.Line", geometry, material);
+    }
+
+    /// <summary>
+    /// Creates a Vector3
     /// </summary>
     /// <param name="x"></param>
     /// <param name="y"></param>

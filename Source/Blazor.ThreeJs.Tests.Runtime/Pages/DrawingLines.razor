@@ -1,11 +1,12 @@
-﻿@using SpawnDev.BlazorJS
+﻿@using Blazor.ThreeJs.Math
+@using SpawnDev.BlazorJS
 @using SpawnDev.BlazorJS.JSObjects
 @inject THREE THREE
 @inject BlazorJSRuntime JS
 
-@page "/rotating-cube"
+@page "/drawing-lines"
 
-<PageTitle>Rotating Cube Example</PageTitle>
+<PageTitle>Drawing Lines Example</PageTitle>
 
 <canvas @ref=_canvasContainer width="500" height="500" style="margin-left:300px;"></canvas>
 
@@ -33,30 +34,32 @@
 
             _renderer = THREE.WebGLRenderer(new WebGLRenderer.WebGLRendererParameters
             {
-                Canvas = new Element(_canvasContainer),                
+                Canvas = new Element(_canvasContainer),
             });
 
             _renderer.SetClearColor(0x333333);
             _renderer.SetSize(canvas.ClientWidth, canvas.ClientHeight);
-            _renderer.SetAnimationLoop(Animate);
 
             document.Body?.AppendChild(_renderer.DomElement);
 
-            var geometry = THREE.BoxGeometry(1, 1, 1);
-            var material = THREE.MeshBasicMaterial( new Material.MeshBasicMaterialParameters { Color = 0x00ff00 } );
-            _cube = THREE.Mesh(geometry, material);
-            _scene.Add(_cube);
+            _camera.Position.Z = 100;
+            _camera.LookAt(0, 0, 0);
 
-            _camera.Position.Z = 3;
+            var material = THREE.LineBasicMaterial(  new Material.LineBasicMaterialParameters  { Color= 0x0000ff } );
+
+            var points = new Array<Vector3>();
+
+            points.Push(THREE.Vector3(-10, 0, 0));
+            points.Push(THREE.Vector3(0, 10, 0));
+            points.Push(THREE.Vector3(10, 0, 0));
+
+            var geometry = THREE.BufferGeometry().SetFromPoints(points);
+
+            var line = THREE.Line(geometry, material);
+
+            _scene.Add(line);
+
+            _renderer.Render(_scene, _camera);
         }
-    }
-
-    private void Animate()
-    {
-        if (_scene is null || _camera is null || _cube is null) return;
-
-        _cube.Rotation.X += 0.01f;
-        _cube.Rotation.Y += 0.01f;
-        _renderer?.Render(_scene, _camera);
     }
 }

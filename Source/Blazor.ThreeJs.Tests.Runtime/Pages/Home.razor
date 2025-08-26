@@ -3,8 +3,10 @@
 @using System.Reflection
 
 <PageTitle>Blazor.ThreeJs Unit Tests</PageTitle>
+<div style="padding:20px;">
+    <UnitTestsView TestAssemblies="_assemblies"></UnitTestsView>
+</div>
 
-<UnitTestsView TestAssemblies="_assemblies"></UnitTestsView>
 
 @code {
     IEnumerable<Assembly>? _assemblies = new List<Assembly> {

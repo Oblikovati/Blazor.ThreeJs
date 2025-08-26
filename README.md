@@ -1,10 +1,10 @@
 # Blazor.ThreeJs
 
-# Package in development, not ready for production!
-
 ## ThreeJs C# Bindings for Blazor 
 
 The package releases are available at: [NuGet]
+
+This package is a work-in-progress porting of all the ThreeJs extensive API, We welcome PR's we welcome helping PRs!
 
 # Instalation
 
