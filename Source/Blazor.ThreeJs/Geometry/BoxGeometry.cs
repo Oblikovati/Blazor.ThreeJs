@@ -1,8 +1,5 @@
 ﻿namespace Blazor.ThreeJs.Geometry;
 
-public class BoxGeometry : Geometry
+public class BoxGeometry(IJSInProcessObjectReference _ref) : BufferGeometry(_ref)
 {
-    public BoxGeometry(IJSInProcessObjectReference _ref) : base(_ref)
-    {
-    }
 }
