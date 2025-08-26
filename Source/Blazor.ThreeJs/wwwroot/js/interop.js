@@ -1,2 +1,3 @@
-﻿import * as THREE from './three.module.js';
+﻿import * as THREE from './three.module.min.js';
+
 window.Three = THREE;

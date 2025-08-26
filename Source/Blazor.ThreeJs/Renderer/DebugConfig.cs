@@ -1,9 +1,9 @@
-﻿namespace Blazor.ThreeJs.WebGLRenderer;
+﻿namespace Blazor.ThreeJs.Renderer;
 
 /// <summary>
 /// https://threejs.org/docs/?q=we#api/en/renderers/WebGLRenderer
 /// </summary>
-public class WebGLRendererDebugOptions(IJSInProcessObjectReference _ref) : EventTarget(_ref)
+public class DebugConfig(IJSInProcessObjectReference _ref) : EventTarget(_ref)
 {
     /// <summary>
     /// defines whether material shader programs are checked for errors during compilation and linkage process. 

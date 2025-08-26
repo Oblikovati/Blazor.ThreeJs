@@ -14,7 +14,10 @@ First add the references your index.html file in the header section:
 <head>
     <!-- your other html tags -->
     <script type="module" src="./_content/Blazor.ThreeJs/js/three.core.js"></script>    
+    <!-- Import for WebGL -->
     <script type="module" src="./_content/Blazor.ThreeJs/js/interop.js"></script>
+    <!-- Or Import for Experimental WebGPU -->
+    <script type="module" src="./_content/Blazor.ThreeJs/js/interop-webgpu.js"></script>
 </head>
 ```
 

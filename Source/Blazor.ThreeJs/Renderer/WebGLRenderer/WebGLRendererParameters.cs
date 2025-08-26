@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Blazor.ThreeJs.WebGLRenderer;
+namespace Blazor.ThreeJs.Renderer.WebGLRenderer;
 
 /// <summary>
 /// Dbject with properties defining the renderer's behavior. 

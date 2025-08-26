@@ -1,10 +1,11 @@
 ﻿using Blazor.ThreeJs.Camera;
-
+using Blazor.ThreeJs.Renderer.WebGPURenderer;
+using Blazor.ThreeJs.Renderer.WebGLRenderer;
 namespace Blazor.ThreeJs;
 
 public class THREE
 {
-    private const string ThreeNS = "window.Three";
+    private string ThreeNS = "window.Three";
     private readonly BlazorJSRuntime JS;
 
     public THREE(BlazorJSRuntime js)
@@ -21,12 +22,26 @@ public class THREE
     /// Creates a WebGL Renderer
     /// </summary>
     /// <returns>WebGLRenderer Instance</returns>
-    public WebGLRenderer.WebGLRenderer WebGLRenderer(WebGLRenderer.WebGLRendererParameters? parameters = null)
+    public WebGLRenderer WebGLRenderer(WebGLRendererParameters? parameters = null)
     {
         if (parameters is null)
-            return JS.New<WebGLRenderer.WebGLRenderer>($"{ThreeNS}.WebGLRenderer");
+            return JS.New<WebGLRenderer>($"{ThreeNS}.WebGLRenderer");
         else
-            return JS.New<WebGLRenderer.WebGLRenderer>($"{ThreeNS}.WebGLRenderer", parameters);
+            return JS.New<WebGLRenderer>($"{ThreeNS}.WebGLRenderer", parameters);
+    }
+
+    /// <summary>
+    /// Creates a WebGPU Renderer
+    /// You must import interop-webgpu.js Instead of interop.js In your Index.html to use WebGPU
+    /// </summary>
+    /// <returns>WebGPURenderer Instance</returns>
+    /// <exception cref="InvalidOperationException"></exception>
+    public WebGPURenderer WebGPURenderer()
+    {
+        if (ThreeNS is "window.Three")
+            throw new InvalidOperationException("You must call ActivateWebGPU() before calling any of the THREE functions!");
+
+        return JS.New<WebGPURenderer>($"{ThreeNS}.WebGLRenderer");
     }
 
     /// <summary>

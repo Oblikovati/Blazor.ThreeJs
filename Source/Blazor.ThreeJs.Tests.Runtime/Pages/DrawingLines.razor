@@ -1,4 +1,5 @@
 ﻿@using Blazor.ThreeJs.Math
+@using Blazor.ThreeJs.Renderer.WebGLRenderer
 @using SpawnDev.BlazorJS
 @using SpawnDev.BlazorJS.JSObjects
 @inject THREE THREE
@@ -12,10 +13,9 @@
 
 @code {
     private ElementReference _canvasContainer;
-    private WebGLRenderer.WebGLRenderer? _renderer;
+    private WebGLRenderer? _renderer;
     private Scene.Scene? _scene;
     private Camera.Camera? _camera;
-    private Mesh.Mesh? _cube;
 
     protected override void OnAfterRender(bool firstRender)
     {
@@ -32,7 +32,7 @@
 
             _camera = THREE.PerspectiveCamera(75, canvas.ClientWidth / canvas.ClientHeight, 0.1, 1000);
 
-            _renderer = THREE.WebGLRenderer(new WebGLRenderer.WebGLRendererParameters
+            _renderer = THREE.WebGLRenderer(new WebGLRendererParameters
             {
                 Canvas = new Element(_canvasContainer),
             });

@@ -1,6 +1,4 @@
-﻿
-
-namespace Blazor.ThreeJs.WebGLRenderer;
+﻿namespace Blazor.ThreeJs.Renderer;
 
 public class OnShaderErrorEvent(IJSInProcessObjectReference _ref) : Event(_ref)
 {

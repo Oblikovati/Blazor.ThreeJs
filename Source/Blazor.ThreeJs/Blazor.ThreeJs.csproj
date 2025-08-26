@@ -50,4 +50,10 @@
     </Resource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\js\interop-webgpu.js">
+      <SubType>Code</SubType>
+    </Content>
+  </ItemGroup>
+
 </Project>
