@@ -13,7 +13,6 @@ First add the references your index.html file in the header section:
 ```html
 <head>
     <!-- your other html tags -->
-    <script type="module" src="./_content/Blazor.ThreeJs/js/three.core.js"></script>    
     <!-- Import for WebGL -->
     <script type="module" src="./_content/Blazor.ThreeJs/js/interop.js"></script>
     <!-- Or Import for Experimental WebGPU -->
@@ -109,6 +108,34 @@ The package contains 3 Projects
 
 The project relies on [SpawnDev.BlazorJS] for interop operations, all the bindings are built on top of this library,
 this library also supports bindings for all the browser apis.
+
+# Roadmap
+
+Aside from the binding API completion. We aim to develop a Component based scene description.
+The idea is to make it simpler and more intuitive for Blazor developers to build their rendering pipelines.
+
+Here is an example how it is planning to look like:
+
+```html
+<BzRenderer>
+    <Cameras>
+        <BzPerspectiveCamera Aspect="1" Far="1000" Fov="100" Near="10"/>
+    </Cameras>
+    <Materials>
+        <BzMeshBasicMaterial Color="0x00FF00" Name="MeshBasicGreen" />
+    </Materials>
+    <Scenes>
+        <BzScene IsActive="true">
+        <!-- Your 3D Object structure goes here -->
+        </BzScene>
+    </Scenes>
+    <Views>
+        <BzCanvas Height="500" Width="500"/>
+    </Views>
+</BzRenderer>
+```
+
+The renderer should support complex scenarios like multiple viewports with multiple cameras, multiple scenes, complex shaders. 
 
 # Governance
 

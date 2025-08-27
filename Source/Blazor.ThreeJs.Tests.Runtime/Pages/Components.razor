@@ -1,0 +1,27 @@
+﻿@page "/components"
+@using Blazor.ThreeJs.Components
+@using Blazor.ThreeJs.Components.Cameras
+@using Blazor.ThreeJs.Components.Materials
+
+<BzRenderer>
+    <Cameras>
+        <BzPerspectiveCamera Aspect="1" Far="1000" Fov="100" Near="10"/>
+    </Cameras>
+    <Materials>
+        <BzMeshBasicMaterial Color="0x00FF00" Name="MeshBasicGreen" />
+    </Materials>
+    <Scenes>
+        <BzScene IsActive="true">
+
+        </BzScene>
+    </Scenes>
+    <Views>
+        <BzCanvas Height="500" Width="500"/>
+    </Views>
+</BzRenderer>
+
+
+
+@code {
+
+}
