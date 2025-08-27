@@ -4,7 +4,7 @@
 
 The package releases are available at: [NuGet]
 
-This package is a work-in-progress porting of all the ThreeJs extensive API, We welcome PR's we welcome helping PRs!
+This package is a work-in-progress porting of all the ThreeJs extensive API, We welcome helping PRs!
 
 # Instalation
 
