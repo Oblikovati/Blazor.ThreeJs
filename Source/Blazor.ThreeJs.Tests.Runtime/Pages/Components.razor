@@ -3,27 +3,29 @@
 @using Blazor.ThreeJs.Components.Cameras
 @using Blazor.ThreeJs.Components.Materials
 
-<canvas @ref=CanvasReference width="250" height="250"></canvas>
-
 <BzRenderer>
     <Cameras>
-        <BzPerspectiveCamera Aspect="1" Far="1000" Fov="100" Near="10"/>
+        <BzPerspectiveCamera Aspect="1" Far="1000" Fov="100" Near="10" IsActive=true/>
     </Cameras>
-    <Materials>
-        <BzMeshBasicMaterial Color="0x00FF00" Name="MeshBasicGreen" />
-    </Materials>
     <Scenes>
-        <BzScene IsActive="true">
-
+        <BzScene IsActive=true>
+            <Meshes>
+                <BzMesh>
+                    <Material>
+                        <BzMeshBasicMaterial Color="0x00FF00" Name="MeshBasicGreen" />
+                    </Material>
+                    <Geometry>
+                        <BzBoxGeometry X="10" Y="20" Z="30"></BzBoxGeometry>
+                    </Geometry>
+                </BzMesh>
+            </Meshes>
         </BzScene>
     </Scenes>
     <Views>
-        <BzCanvas Height="500" Width="500" ExternalCanvas=true CanvasReference="@CanvasReference"/>
+        <BzCanvas Height="500" Width="500"/>
     </Views>
 </BzRenderer>
 
-
-
 @code {
-    public ElementReference CanvasReference { get; set; }
+
 }

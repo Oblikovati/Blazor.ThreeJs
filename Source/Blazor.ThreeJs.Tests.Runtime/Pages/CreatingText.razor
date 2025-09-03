@@ -42,8 +42,6 @@
             _renderer.SetSize(canvas.ClientWidth, canvas.ClientHeight);
             _renderer.SetAnimationLoop(Animate);
 
-            document.Body?.AppendChild(_renderer.DomElement);
-
             var geometry = THREE.BoxGeometry(1, 1, 1);
             var material = THREE.MeshBasicMaterial(new Material.MeshBasicMaterialParameters { Color = 0x00ff00 });
             _cube = THREE.Mesh(geometry, material);

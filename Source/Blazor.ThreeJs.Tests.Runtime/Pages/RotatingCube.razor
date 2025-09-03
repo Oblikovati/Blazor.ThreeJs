@@ -30,7 +30,7 @@
 
             _scene = THREE.Scene();
 
-            _camera = THREE.PerspectiveCamera(75, canvas.ClientWidth / canvas.ClientHeight, 0.1, 1000);
+            _camera = THREE.PerspectiveCamera(75, (double) canvas.ClientWidth / canvas.ClientHeight, 0.1, 1000);
 
             _renderer = THREE.WebGLRenderer(new WebGLRendererParameters
             {
@@ -40,8 +40,6 @@
             _renderer.SetClearColor(0x333333);
             _renderer.SetSize(canvas.ClientWidth, canvas.ClientHeight);
             _renderer.SetAnimationLoop(Animate);
-
-            document.Body?.AppendChild(_renderer.DomElement);
 
             var geometry = THREE.BoxGeometry(1, 1, 1);
             var material = THREE.MeshBasicMaterial( new Material.MeshBasicMaterialParameters { Color = 0x00ff00 } );

@@ -40,8 +40,6 @@
             _renderer.SetClearColor(0x333333);
             _renderer.SetSize(canvas.ClientWidth, canvas.ClientHeight);
 
-            document.Body?.AppendChild(_renderer.DomElement);
-
             _camera.Position.Z = 100;
             _camera.LookAt(0, 0, 0);
 

@@ -3,7 +3,7 @@
 public abstract class BzMaterial : ComponentBase
 {
     [CascadingParameter]
-    public BzRenderer? Parent { get; set; }
+    public BzMesh? Parent { get; set; }
 
     public abstract Material.Material Material { get; protected set; }
 
