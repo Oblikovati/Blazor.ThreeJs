@@ -3,6 +3,8 @@
 @using Blazor.ThreeJs.Components.Cameras
 @using Blazor.ThreeJs.Components.Materials
 
+<canvas @ref=CanvasReference width="250" height="250"></canvas>
+
 <BzRenderer>
     <Cameras>
         <BzPerspectiveCamera Aspect="1" Far="1000" Fov="100" Near="10"/>
@@ -16,12 +18,12 @@
         </BzScene>
     </Scenes>
     <Views>
-        <BzCanvas Height="500" Width="500"/>
+        <BzCanvas Height="500" Width="500" ExternalCanvas=true CanvasReference="@CanvasReference"/>
     </Views>
 </BzRenderer>
 
 
 
 @code {
-
+    public ElementReference CanvasReference { get; set; }
 }

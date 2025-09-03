@@ -9,4 +9,9 @@ public abstract class BzMaterial : ComponentBase
 
     [Parameter]
     public string Name { get; set; } = "Default";
+
+    protected override void OnInitialized()
+    {
+        Parent?.CallbackMaterials.Add(this);
+    }
 }

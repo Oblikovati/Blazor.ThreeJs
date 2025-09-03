@@ -1,4 +1,6 @@
-﻿namespace Blazor.ThreeJs.Components;
+﻿using Blazor.ThreeJs.Exceptions;
+
+namespace Blazor.ThreeJs.Components;
 
 public partial class BzCanvas : ComponentBase
 {
@@ -6,7 +8,7 @@ public partial class BzCanvas : ComponentBase
     public BzRenderer? Parent { get; set; }
 
     [Parameter]
-    public ElementReference CanvasReference { get; set; }
+    public ElementReference? CanvasReference { get; set; }
 
     [Parameter]
     public int Width { get; set; } = 300;
@@ -22,4 +24,12 @@ public partial class BzCanvas : ComponentBase
 
     [Parameter]
     public bool ExternalCanvas { get; set; } = false;
+
+    protected override void OnInitialized()
+    {
+        if (ExternalCanvas && !CanvasReference.HasValue)
+            throw new InvalidViewConfigurationException("A canvas was marked as External but no CanvasReference was provided!");
+
+        Parent?.CallbackViews.Add(this);
+    }
 }
